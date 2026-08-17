@@ -26,3 +26,5 @@ changelog.md	    Al finalizar cada sesión.
 decisions.md	    Cada vez que tomemos una decisión de diseño importante.
 concepts.md	        Cada vez que aprendamos un concepto nuevo de Python.
 glossary.md	        Cada vez que aparezca un término técnico nuevo.
+
+GitHub remote repository for InventoryPro.
