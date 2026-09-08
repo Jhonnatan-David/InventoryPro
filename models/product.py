@@ -1,4 +1,9 @@
-
+from utils.validators import (
+    validate_product_name,
+    validate_price,
+    validate_quantity,
+    validate_expiration_date,
+)
 
 class Product:
     
@@ -12,7 +17,7 @@ class Product:
         ):
         
         self._id = product_id
-        self._name = name
+        self.name = name
         self.price = price
         self.quantity = quantity
         self.expiration_date = expiration_date
@@ -23,7 +28,7 @@ class Product:
                 f"----------------------------------------\n"
                 f"ID: {self._id}\n"
                 f"Name: {self._name}\n"
-                f"Price: {self._price}\n"
+                f"Price: ${self._price}\n"
                 f"Quantity: {self._quantity}\n"
                 f"Expiration Date: {self._expiration_date}\n"
             )
@@ -37,20 +42,16 @@ class Product:
         return self._name
     
     @name.setter
-    def name(self, texto):
-        
-        self._name=texto
+    def name(self, value):
+        self._name = validate_product_name(value)
             
     @property
     def price(self):
         return self._price
         
     @price.setter
-    def price(self, value):
-        if value <= 0:
-            raise ValueError("Price must be greater than zero")
-            
-        self._price = value
+    def price(self, value):  
+        self._price = validate_price(value)
             
     @property
     def quantity(self):
@@ -58,9 +59,7 @@ class Product:
     
     @quantity.setter
     def quantity(self, value):
-        if value < 0:
-            raise ValueError("Quantity cannot be negative and less than zero")
-        self._quantity = value
+        self._quantity = validate_quantity(value)
         
     @property
     def expiration_date(self):
@@ -68,7 +67,7 @@ class Product:
 
     @expiration_date.setter
     def expiration_date(self, value):
-        self._expiration_date = value
+        self._expiration_date = validate_expiration_date(value)
     
 
     def add_stock(self, amount):
