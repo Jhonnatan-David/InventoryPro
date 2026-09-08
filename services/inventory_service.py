@@ -46,4 +46,4 @@ class InventoryService:
             )
         
     def get_all_products(self):
-        return self.inventory.get_product()
+        return self.inventory.get_products()

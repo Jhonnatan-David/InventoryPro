@@ -1,3 +1,4 @@
+from utils.exceptions import InvalidProductIdError
 
 class Inventory:
     def __init__(self):
@@ -5,12 +6,8 @@ class Inventory:
         
     def add_product(self, product):
         self.products.append(product)
-        
-    def show_products(self):
-        for product in self.products:
-            print(product)
             
-    def get_product(self):
+    def get_products(self):
         return self.products
             
     def total_products(self):
@@ -22,9 +19,13 @@ class Inventory:
         return False
     
     def find_product_by_id(self, product_id):
+        if product_id <= 0:
+            raise InvalidProductIdError("product ID must be greater than zero.")
         for product in self.products:
             if product_id == product.id:
                 return product
+        
+        return None
 
     def remove_product(self, product_id):
         delete_product= self.find_product_by_id (product_id)
