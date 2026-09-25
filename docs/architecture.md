@@ -43,3 +43,11 @@ Inventory
 ├── remove_product()
 ├── find_product()
 └── list_products()
+
+GIT
+main
+ │
+ ├── feature/add-product
+ ├── feature/search-products
+ ├── feature/update-product
+ └── feature/delete-product
